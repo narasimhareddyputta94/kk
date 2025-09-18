@@ -1,0 +1,62 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = C:\Users\naras\Downloads\hw1\hw1\target\scala-3.5.0\classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Shape.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Shape.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Shape.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Game.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Game.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts$.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Shape.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Shape.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Shape.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Shape.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Game.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Game.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts$.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Shape.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = C:\Users\naras\Downloads\hw1\hw1\target\scala-3.5.0\classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Shape.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Shape.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Shape.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$Game.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Game.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLife$.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	contracts$.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava$Shape.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GameOfLifeJava.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: C:\Users\naras\Downloads\hw1\hw1\target\scala-3.5.0\classes.bak[0m
