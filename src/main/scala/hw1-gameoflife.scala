@@ -1,4 +1,4 @@
-  // GENERATED
+// GENERATED
 /* INSTRUCTIONS
  *
  * This first assignment makes you familiar with the Scala programming
@@ -54,126 +54,96 @@
 import contracts.*
 object GameOfLife:
 
-  // EXERCISE 1: complete the following definition that returns
-  // a Blinker shape.
-  //
-  // You can look up a Java implementation of this function in  
-  //    src/main/java/gameoflife.java#createBlinker
-  //
-  // Replace ??? with your implementation  
-  def createBlinker: Array[Array[Int]] = 
-    // TODO: Provide definition here
-    ???
+  // EXERCISE 1: blinker (vertical 3x3, middle col alive)
+  def createBlinker: Array[Array[Int]] =
+    Array(
+      Array(0, 1, 0),
+      Array(0, 1, 0),
+      Array(0, 1, 0)
+    )
 
-  // EXERCISE 2: complete the following definition that returns
-  // a Glider shape.
-  //
-  // You can look up a Java implementation of this function in  
-  //    src/main/java/gameoflife.java#createGlider
-  //
-  // Replace ??? with your implementation  
-  def createGlider: Array[Array[Int]] = 
-    // TODO: Provide definition here
-    ???
-  
-  // EXERCISE 3: complete the following definition, so that print returns a
-  // string that renders the two-dimensional array `matrix` with a character
-  // space for a zero entry and '#' for a non-zero entry. Every "line" in 
-  // the matrix should be its own line in the string.
-  //
-  // You can look up a Java implementation of this function in  
-  //    src/main/java/gameoflife.java#print
-  //
-  // Replace ??? with your implementation
-  //
-  // For example, the array
-  //   Array(
-  //     Array(1, 0, 0), 
-  //     Array(1, 0, 1))
-  // should result in the string
-  //   "#  \n# #"
-  def print(matrix: Array[Array[Int]]) : String = {
-    // TODO: Provide definition here
-    ???
-  }
-  
-  
-  // EXERCISE 4: add a contract that requires the array pattern to 
-  // have at least 1 line and at least 1 column. Implement the
-  // `numRows` function to return the number of rows in `pattern`,
-  // and the `numCols` function to return the number of columns in
-  // `pattern`.
-  //
-  // You can look up a Java implementation of this class in  
-  //    src/main/java/gameoflife.java#Shape
-  //
-  // Replace ??? with your implementation
+  // EXERCISE 2: glider (classic 3x3)
+  def createGlider: Array[Array[Int]] =
+    Array(
+      Array(0, 0, 1),
+      Array(1, 0, 1),
+      Array(0, 1, 1)
+    )
+
+  // EXERCISE 3: render board
+  // 0 -> space, non-zero -> '#'
+  // keep a newline for empty rows; no extra newline at end unless last row is empty
+  def print(matrix: Array[Array[Int]]) : String =
+    if matrix.isEmpty then ""
+    else
+      val rows = matrix.map(row => row.map(v => if v == 0 then ' ' else '#').mkString)
+      val withNL = rows.map(_ + "\n").mkString
+      if rows.lastOption.exists(_.nonEmpty) then withNL.dropRight(1) else withNL
+
+  // EXERCISE 4: shape must be at least 1x1
   class Shape(val pattern: Array[Array[Int]]):
-    // TODO: Provide definition here
-    ???
-    def numRows : Int = ???
-    def numCols : Int = ???
+    require(pattern.nonEmpty && pattern(0).nonEmpty, "pattern must be at least 1x1")
+    def numRows: Int = pattern.length
+    def numCols: Int = pattern(0).length
   end Shape
-  
-  // You can look up a Java implementation of this class in  
-  //    src/main/java/gameoflife.java#Game
+
+  // game board
   class Game(val rows: Int, val cols: Int):
-    // EXERCISE 5: instantiate an array with `rows` number of rows
-    // and `cols` number of columns. The array should have all entries
-    // set to 0.
-    var board: Array[Array[Int]] = {
-      // TODO: Provide definition here
-      ???
-    } ensuring {
-      (result: Array[Array[Int]]) => result.length == rows && result.forall(_.length == cols)
-    }
+    // EXERCISE 5: init zeros, ensure dims
+    var board: Array[Array[Int]] =
+      Array.fill(rows)(Array.fill(cols)(0))
+        .ensuring(res => res.length == rows && res.forall(_.length == cols))
 
-    // You can look up a Java implementation of the `add` function in  
-    //    src/main/java/gameoflife.java#Game.add  
-    def add(s: Shape, row: Int, col: Int) : Unit = 
-      // EXERCISE 6: implement a `require` contract that checks 
-      // that that shape `s` fully fits onto the board when added
-      // at `row`/`col`.      
-      // TODO: Provide definition here
-      ???
-      
-      // EXERCISE 7: implement the `add` function that sets the
-      // values of the board starting at the upper left corner
-      // indicated by `row` and `col` to the values of shape `s`.
-      // TODO: Provide definition here
-      ???
-    end add
+    // EXERCISE 6+7: place a shape at (row, col)
+    def add(s: Shape, row: Int, col: Int): Unit =
+      require(
+        row >= 0 && col >= 0 &&
+        row + s.numRows <= rows &&
+        col + s.numCols <= cols,
+        "shape does not fit on board at this place"
+      )
+      for
+        r <- 0 until s.numRows
+        c <- 0 until s.numCols
+      do
+        board(row + r)(col + c) = s.pattern(r)(c)
 
-    // EXERCISE 8: implement the `step` function by following the
-    // Game of Life rules.
-    //
-    // You can look up a Java implementation of this function in  
-    //    src/main/java/gameoflife.java#Game.step
-    //
-    // GRADING: 1.5 points
-    def step() : Unit = 
-      // TODO: Provide definition here
-      ???
-    end step
+    // EXERCISE 8: one life step
+    def step(): Unit =
+      inline def inBounds(r: Int, c: Int) = r >= 0 && r < rows && c >= 0 && c < cols
+      val nbrs = for dr <- -1 to 1; dc <- -1 to 1 if !(dr == 0 && dc == 0) yield (dr, dc)
+
+      def countN(r: Int, c: Int): Int =
+        nbrs.count { case (dr, dc) =>
+          val rr = r + dr; val cc = c + dc
+          inBounds(rr, cc) && board(rr)(cc) != 0
+        }
+
+      board = Array.tabulate(rows, cols) { (r, c) =>
+        val alive = board(r)(c) != 0
+        val n = countN(r, c)
+        if alive && (n == 2 || n == 3) then 1
+        else if !alive && n == 3 then 1
+        else 0
+      }
   end Game
-  
-  // BONUS EXERCISE: implement the `fromString` function to read
-  // a string into a Shape.
-  //
-  // For example, the string 
-  // """    
-  //    | ## 
-  //    | ## 
-  //    |    """.stripMargin
-  // should be parsed into the Block pattern.
-  //
-  // GRADING: 1 point
+
+  // BONUS: parse multi-line string into a Shape
   def fromString(s: String): Shape =
-    // TODO: Provide definition here
-    ???
+    val lines = s.stripMargin.split("\n", -1).toIndexedSeq
+    val width = if lines.isEmpty then 0 else lines.map(_.length).max
+    val arr =
+      if lines.isEmpty then Array(Array(0))
+      else
+        lines
+          .map(_.padTo(width, ' '))
+          .map(_.map(ch => if ch == '#' then 1 else 0).toArray)
+          .toArray
+    new Shape(arr)
   end fromString
 
-  def main(args: Array[String]) : Unit =
+  // demo
+  def main(args: Array[String]): Unit =
     val blinker = new Shape(createBlinker)
     val glider = new Shape(createGlider)
 
